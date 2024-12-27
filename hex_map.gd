@@ -51,6 +51,8 @@ func generate_map(q_radius, r_radius) -> void:
 
 
 func tile_clicked(tile: HexTile) -> void:
+	if Engine.is_editor_hint():
+		return
 	selected.append(tile)
 	print(selected)
 	if selected.size() == 2:
@@ -87,7 +89,7 @@ func axial_to_cube(q, r) -> Vector3:
 func cube_to_axial_vector(cube: Vector3) -> Vector2:
 	return Vector2(cube.x, cube.y)
 	
-func cube_to_axial(q, r, s) -> Vector2:
+func cube_to_axial(q, r, _s) -> Vector2:
 	return Vector2(q, r);
 
 func pixel_to_hex(x: float, y: float) -> Vector2:

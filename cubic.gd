@@ -1,10 +1,19 @@
 extends RefCounted
 class_name Cubic
 
-const cubic_direction_vectors = [
-	
-	
-]
+# 0: North east
+# 1: East
+# 2: South east
+# 3: South west
+
+# var cubic_direction_vectors = [
+# 	Cubic.create(1, -1, 0),
+# 	Cubic.create(1, 0, -1),
+# 	Cubic.create(0, 1, -1),
+# 	Cubic.create(-1, 1, 0),
+# 	Cubic.create(-1, 0, 1),
+# 	Cubic.create(0, -1, 1),
+# ]
 
 var q = 0
 var r = 0
