@@ -2,7 +2,8 @@
 extends Node3D
 
 
-@export var hex_tile: PackedScene; 
+@export var hex_tile: PackedScene;
+@export var cube_mesh: PackedScene; 
 
 @export var radius:= 1;
 
@@ -60,7 +61,13 @@ func tile_clicked(tile: HexTile) -> void:
 		print("Distance: ", Cubic.cubic_distance(a, b))
 		var path = Cubic.cubic_linedraw(a, b)
 		for node in path:
-			map[node.to_axial().to_string()].position.y += 1
+			print(node);
+			var instance = cube_mesh.instantiate()
+			instance.position = map[node.to_axial().to_string()].position
+			instance.position.y += 1
+			add_child(instance);
+			# map[node.to_axial().to_string()].position.y += 1
+
 	
 
 

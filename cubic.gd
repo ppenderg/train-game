@@ -12,21 +12,26 @@ var s = 0
 
 
 # Static Functions
-static func create(q, r, s) -> Cubic:
+static func create(q0, r0, s0) -> Cubic:
 	var instance = Cubic.new();
-	instance.q = q;
-	instance.r = r;
-	instance.s = s;
+	instance.q = q0;
+	instance.r = r0;
+	instance.s = s0;
 	return instance;
+
 static func cubic_add(a, b):
 	return Cubic.create(a.q+b.q, a.r+b.r, a.s+b.s);
+
 static func cubic_subtract(a, b):
 	return Cubic.create(a.q-b.q, a.r-b.r, a.s-b.s);
+	
 static func cubic_distance(a, b):
 	var vec = cubic_subtract(a, b)
 	return max(abs(vec.q), abs(vec.r), abs(vec.s));
+
 static func cubic_lerp(a: Cubic, b:Cubic, t) -> Cubic:
 	return Cubic.create(lerp(a.q, b.q, t), lerp(a.r, b.r, t), lerp(a.s, b.s, t));
+
 static func cubic_linedraw(a: Cubic, b: Cubic):
 	var N = cubic_distance(a, b)
 	var results = []
@@ -39,6 +44,10 @@ func cubic_round():
 	var q1 = round(q)
 	var r1 = round(r)
 	var s1 = round(s)
+
+	if q1 == -0: q1 = 0
+	if r1 == -0: r1 = 0
+	if s1 == -0: s1 = 0
 	
 	var q_diff = abs(q1-q)
 	var r_diff = abs(r1-r)
@@ -50,9 +59,9 @@ func cubic_round():
 	elif r_diff > s_diff:
 		r1 = -q1-s1
 	else:
-		s = -q-r
+		s1 = -q-r
 	
-	return Cubic.create(q, r, s)
+	return Cubic.create(q1, r1, s1)
 
 
 # Methods
