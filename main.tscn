@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://paql56tnpqfq"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_jpcp2"]
+[ext_resource type="PackedScene" uid="uid://c5mil72penduw" path="res://hex_map.tscn" id="1_npp20"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_jpcp2")
+
+[node name="HexMap" parent="." instance=ExtResource("1_npp20")]
+radius = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.825528, 0.564362, 0, -0.564362, 0.825528, 0, 7.23184, 6.38857)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0926313, 0.9957, 0, -0.9957, -0.0926313, 0, 3.09043, 0)

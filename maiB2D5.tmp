@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://paql56tnpqfq"]
+
+[ext_resource type="PackedScene" uid="uid://c5mil72penduw" path="res://hex_map.tscn" id="1_npp20"]
+
+[node name="Main" type="Node3D"]
+
+[node name="HexMap" parent="." instance=ExtResource("1_npp20")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.739455, 0.673206, 0, -0.673206, 0.739455, 0, 3.82407, 4.31495)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0926313, 0.9957, 0, -0.9957, -0.0926313, 0, 3.09043, 0)

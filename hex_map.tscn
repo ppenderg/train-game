@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5mil72penduw"]
+
+[ext_resource type="Script" path="res://hex_map.gd" id="1_b4or1"]
+[ext_resource type="PackedScene" uid="uid://da3mdhwc2b3a8" path="res://hex_tile.tscn" id="2_82q2j"]
+
+[node name="HexMap" type="Node3D"]
+script = ExtResource("1_b4or1")
+hex_tile = ExtResource("2_82q2j")
+
+[node name="Tiles" type="Node" parent="."]
