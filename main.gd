@@ -39,7 +39,9 @@ func tile_clicked(tile: HexTile) -> void:
 	if selected.size() >= 2:
 		selected = []
 	selected.append(tile)
-	print(selected)
+	if selected.size() == 2:
+		hex_map.linedraw(selected[0], selected[1]);
+	#print(selected)
 	
 
 func _input(event: InputEvent) -> void:

@@ -31,6 +31,8 @@ func add_tile(q, r, click_handler = tile_clicked) -> void:
 		tile.connect("clicked", click_handler);
 	$Tiles.add_child(tile)
 
+
+
 func generate_map(q_radius=3, r_radius=3, click_handler = tile_clicked) -> void:
 	q_radius += 1;
 	r_radius += 1;
@@ -44,6 +46,15 @@ func generate_map(q_radius=3, r_radius=3, click_handler = tile_clicked) -> void:
 		
 
 
+func linedraw(start_tile: HexTile, end_tile: HexTile) -> void:
+	print("Linedraw from %s to %s" % [start_tile, end_tile]);
+	var path = Axial.linedraw(start_tile.axial, end_tile.axial)
+	print("Path: ", path)
+	
+	
+
+
+
 func tile_clicked(tile: HexTile) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -54,8 +65,8 @@ func tile_clicked(tile: HexTile) -> void:
 		var a = selected[0].axial.to_cubic();
 		var b = selected[1].axial.to_cubic();
 		print("Coordinates: ", a, b)
-		print("Distance: ", Cubic.cubic_distance(a, b))
-		var path = Cubic.cubic_linedraw(a, b)
+		print("Distance: ", Cubic.distance(a, b))
+		var path = Cubic.linedraw(a, b)
 		for node in path:
 			print(node);
 			var instance = cube_mesh.instantiate()

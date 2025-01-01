@@ -12,6 +12,17 @@ static func create(q0, r0) -> Axial:
 	instance.r = r0
 	return instance
 
+
+static func distance(a, b):
+	return Cubic.distance(a.to_cubic(), b.to_cubic())
+	
+static func linedraw(a: Axial, b: Axial) -> Array[Axial]:
+	var res = Cubic.linedraw(a.to_cubic(), b.to_cubic())
+	var results: Array[Axial] = []
+	for cube in res:
+		results.append(cube.to_axial())
+	return results
+
 func to_cubic() -> Cubic:
 	return Cubic.create(q, r, -q-r);
 
