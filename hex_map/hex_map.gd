@@ -1,6 +1,6 @@
 @tool
 extends Node3D
-
+class_name HexMap
 
 @export var hex_tile: PackedScene;
 @export var cube_mesh: PackedScene; 
@@ -13,12 +13,25 @@ var selected = [];
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		generate_map(radius, radius);
 		print("I am runnign now!");
-	generate_map(radius, radius);
 
 
+func add_tile(q, r, click_handler = tile_clicked) -> void:
+	if map.has("(%s,%s)" % [q, r]):
+		print("(%s, %s) exists already!" % [q, r])
+		return  
+	var tile = hex_tile.instantiate() as HexTile
+	var tile_position = hex_to_pixel(q, r)
+	tile.position.x = tile_position.x
+	tile.position.z = tile_position.y
+	map["(%s,%s)" % [q, r]] = tile;
+	if !Engine.is_editor_hint():
+		tile.set_axial(q, r)
+		tile.connect("clicked", click_handler);
+	$Tiles.add_child(tile)
 
-func generate_map(q_radius, r_radius) -> void:
+func generate_map(q_radius=3, r_radius=3, click_handler = tile_clicked) -> void:
 	q_radius += 1;
 	r_radius += 1;
 	for i in range(-q_radius, q_radius):
@@ -27,27 +40,8 @@ func generate_map(q_radius, r_radius) -> void:
 		for j in range(r_1, r_2):
 			var k = -i-j
 			if abs(i) < q_radius && abs(j) < r_radius && abs(k) < r_radius:
-				#print(i, ",", j,",", k)
-				var tile = hex_tile.instantiate() as HexTile; 
-				var tile_position = hex_to_pixel(i, j);
-				if !Engine.is_editor_hint():
-					tile.set_axial(i, j);
-				#tile.q = i;
-				#tile.r = j;
-				tile.position.x = tile_position.x;
-				tile.position.z = tile_position.y;
-				#if Engine.is_editor_hint():
-					#print(Vector3(i,j,k), tile_position, tile.position, pixel_to_hex(tile.position.x, tile.position.z));
-				map["(%s,%s)" % [i, j]] = tile;
-				
-				if !Engine.is_editor_hint():
-					tile.connect("clicked", tile_clicked);
-				tile.name = "(%s,%s)" % [i,j]
-				$Tiles.add_child(tile);
+				add_tile(i, j, click_handler)
 		
-
-
-
 
 
 func tile_clicked(tile: HexTile) -> void:

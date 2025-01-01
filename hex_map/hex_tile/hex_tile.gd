@@ -32,3 +32,6 @@ func get_axial():
 func set_y(height: int):
 	y = height
 	position.y = y*.1
+
+func _to_string() -> String:
+	return str(axial);

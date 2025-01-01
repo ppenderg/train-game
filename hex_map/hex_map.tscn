@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5mil72penduw"]
 
-[ext_resource type="Script" path="res://hex_map.gd" id="1_b4or1"]
-[ext_resource type="PackedScene" uid="uid://da3mdhwc2b3a8" path="res://hex_tile.tscn" id="2_82q2j"]
+[ext_resource type="Script" path="res://hex_map/hex_map.gd" id="1_b4or1"]
+[ext_resource type="PackedScene" uid="uid://da3mdhwc2b3a8" path="res://hex_map/hex_tile/hex_tile.tscn" id="2_82q2j"]
 [ext_resource type="PackedScene" uid="uid://dh4622vls52a5" path="res://cube_mesh.tscn" id="3_34454"]
 
 [node name="HexMap" type="Node3D"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://paql56tnpqfq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_jpcp2"]
-[ext_resource type="PackedScene" uid="uid://c5mil72penduw" path="res://hex_map/hex_map.tscn" id="1_npp20"]
-[ext_resource type="Script" path="res://state_machine/state_machine.gd" id="3_riokn"]
-[ext_resource type="Script" path="res://state_machine/states/default_state.gd" id="4_cmwuf"]
-[ext_resource type="PackedScene" uid="uid://ddv5cxeun0aux" path="res://ui/test_ui.tscn" id="4_ips50"]
-[ext_resource type="Script" path="res://state_machine/states/test_state.gd" id="5_ntygj"]
-[ext_resource type="PackedScene" uid="uid://dbkyah8x05qpo" path="res://ui/test_ui_2.tscn" id="5_rae7q"]
+[ext_resource type="PackedScene" uid="uid://c5mil72penduw" path="res://hex_map.tscn" id="1_npp20"]
+[ext_resource type="Script" path="res://state_machine.gd" id="3_riokn"]
+[ext_resource type="Script" path="res://default_state.gd" id="4_cmwuf"]
+[ext_resource type="PackedScene" uid="uid://ddv5cxeun0aux" path="res://test_ui.tscn" id="4_ips50"]
+[ext_resource type="Script" path="res://test_state.gd" id="5_ntygj"]
+[ext_resource type="PackedScene" uid="uid://dbkyah8x05qpo" path="res://test_ui_2.tscn" id="5_rae7q"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jpcp2")
@@ -37,7 +37,6 @@ gui = NodePath("../../CanvasLayer/TestUI2")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TestUI" parent="CanvasLayer" instance=ExtResource("4_ips50")]
-offset_bottom = -600.0
 
 [node name="TestUI2" parent="CanvasLayer" instance=ExtResource("5_rae7q")]
 visible = false
